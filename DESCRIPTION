@@ -7,13 +7,11 @@ Author:
   email = "henryhuhuhu@tamu.edu",
   role = c("aut", "cre"))
 Maintainer: Henry Hu <henryhuhuhu@tamu.edu>
-Description: 
-This package contains the functions that will encode messages using the RSA methodology. 
-These functions include:
-The random prime number generator of an inputted bit size that outputs a prime number of the provided bit size. 
-The key encryption function which needs the input of two unique large prime integers to generate the public and private keys.
-The message encryption function which encrypts an inputted plaintext using the inputted public key and outputs the ciphertext
-The message decryption function which decrypts an inputted ciphertext using the inputted private key and outputs the plaintext
+Description: This package contains the functions that will encode messages using the RSA methodology. These functions include:
+  The random prime number generator of an inputted bit size that outputs a prime number of the provided bit size. 
+  The key encryption function which needs the input of two unique large prime integers to generate the public and private keys.
+  The message encryption function which encrypts an inputted plaintext using the inputted public key and outputs the ciphertext
+  The message decryption function which decrypts an inputted ciphertext using the inputted private key and outputs the plaintext
 License: GPL (>= 3)
 Imports: Rcpp (>= 1.0.9)
 LinkingTo: Rcpp
