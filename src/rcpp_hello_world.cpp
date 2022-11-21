@@ -1,6 +1,9 @@
 
 #include <Rcpp.h>
+#include <cmath>
 using namespace Rcpp;
+using namespace std;
+
 
 // [[Rcpp::export]]
 List rcpp_hello_world() {
