@@ -14,8 +14,8 @@ List rcpp_hello_world() {
 
 int NumberGenerator(int n){
   // random number of size n bits
-  int max = (long)powl(2, n) - 1;
-  int min = (long)powl(2, n - 1) + 1;
+  int max = pow(2, n) - 1;
+  int min = pow(2, n - 1) + 1;
   int number = min + (rand() % ( max - min + 1 ) );
   return number;
 }
@@ -42,6 +42,34 @@ bool LowLevelPrimeCheck(int number){
   return 0;
 }
 
-bool HighLevelPrimeCheck(int number){
-  
+
+bool PrimeCheck(int number){
+  if(LowLevelPrimeCheck(number) == 0){
+    return 0;
+  }
+  //Rabin Miller Primality Test
+  int d = number - 1;
+  while(d % 2 ==0){
+    d /= 2;
+  }
+  int iter = 20;    //Number of iterations of test. Higher value is more accurate
+  for(int i = 0; i < iter; i++){
+    // Pick a random number in [2 to (number-2)]
+    int a = 2 + rand() % (number - 4);
+    int modExp = (a ^ d) % number;
+    if(modExp == 1 || modExp == number - 1){
+      return 1;
+    }
+    while(d != number - 1){
+      modExp = (modExp ^ 2) % number;
+      d *= 2;
+      if(modExp == 1){
+        return 0;
+      }
+      if(modExp == number - 1){
+        return 1;
+      }
+    }
+  }    
+  return 0;
 }
