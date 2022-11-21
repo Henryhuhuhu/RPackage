@@ -42,7 +42,6 @@ bool LowLevelPrimeCheck(int number){
   return 0;
 }
 
-
 bool PrimeCheck(int number){
   if(LowLevelPrimeCheck(number) == 0){
     return 0;
@@ -72,4 +71,14 @@ bool PrimeCheck(int number){
     }
   }    
   return 0;
+}
+
+int PrimeNumberGenerate(int n){
+  int number;
+  while(1){
+    number = NumberGenerator(n);
+    if(PrimeCheck(number)){
+      return number;
+    }
+  }
 }
