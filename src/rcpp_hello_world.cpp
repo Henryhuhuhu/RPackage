@@ -58,12 +58,12 @@ bool PrimeCheck(int number){
   for(int i = 0; i < iter; i++){
     // Pick a random number in [2 to (number-2)]
     int a = 2 + rand() % (number - 4);
-    int modExp = (a ^ d) % number;
+    int modExp = int(pow(a, d)) % number;
     if(modExp == 1 || modExp == number - 1){
       return 1;
     }
     while(d != number - 1){
-      modExp = (modExp ^ 2) % number;
+      modExp = (modExp * modExp) % number;
       d *= 2;
       if(modExp == 1){
         return 0;
