@@ -85,3 +85,11 @@ int generatePrime(int n){
     }
   }
 }
+
+char messageEncrypt(const char plaintext[], int pubKey){
+  for(int character : strlen(plaintext)){
+    
+  }
+}
+
+

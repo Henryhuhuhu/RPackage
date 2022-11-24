@@ -17,6 +17,6 @@ generatePrime(*n*) - The random prime number generator of an inputted bit size *
 
 keyEncrypt(*p, q*) - The key encryption function which needs the input of two unique large prime integers *p* and *q* to generate the public and private keys. (in progress)
 
-messageEncrypt(plaintext, key) - The message encryption function which encrypts an inputted character vector *plaintext* using the inputted public key and outputs the character vector *ciphertext.* (in progress)
+messageEncrypt(plaintext, pubKey) - The message encryption function which encrypts an inputted character vector *plaintext* using the inputted public key and outputs the character vector *ciphertext.* (in progress)
 
-messageDecrypt(ciphertext, key) - The message decryption function which decrypts an inputted character vector *ciphertext* using the inputted private key and outputs the character vector *plaintext* (in progress)
+messageDecrypt(ciphertext, privKey) - The message decryption function which decrypts an inputted character vector *ciphertext* using the inputted private key and outputs the character vector *plaintext* (in progress)
