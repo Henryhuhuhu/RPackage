@@ -76,7 +76,7 @@ bool PrimeCheck(int number){
   return 0;
 }
 
-int PrimeNumberGenerate(int n){
+int generatePrime(int n){
   int number;
   while(1){
     number = NumberGenerator(n);
