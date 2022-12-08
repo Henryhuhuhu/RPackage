@@ -87,24 +87,31 @@ int generatePrime(int n){
   }
 }
 
-CharacterVector messageEncrypt(const CharacterVector plaintext, int pubKey){
+CharacterVector messageEncrypt(const CharacterVector plaintext, int e, int n){
   CharacterVector ciphertext = clone(plaintext);
   for(int index = 0; index < plaintext.size(); index++){
     char character = Rcpp::as<char>(ciphertext[index]);
-    //convert char to ascii
-    ciphertext[index] = int(character);
-    
+    //convert char to ascii and encrypt ascii value
+    int encryptedValue = int(pow(int(character), e)) % n;
+    //convert value to char
+    ciphertext[index] = static_cast<char>(encryptedValue);
   }
   return ciphertext;
 }
 
-char messageDecrypt(const char ciphertext[], int privKey){
-  char plaintext[sizeof(ciphertext)];
-  for(int index = 0; index < strlen(ciphertext); index++){
-    //char character = plaintext[index];
-    plaintext[index] = (int)ciphertext[index];
+CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
+  CharacterVector plaintext = clone(ciphertext);
+  for(int index = 0; index < ciphertext.size(); index++){
+    char character = Rcpp::as<char>(plaintext[index]);
+    //convert char to ascii and decrypt ascii value
+    int decryptedValue = int(pow(int(character), d)) % n;
+    //convert value to char
+    plaintext[index] = static_cast<char>(decryptedValue);
+    
   }
-  return (char)plaintext;
+  return plaintext;
 }
+
+
 
 
