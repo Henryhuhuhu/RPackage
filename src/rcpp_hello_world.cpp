@@ -35,6 +35,7 @@ bool LowLevelPrimeCheck(int number){
                   353, 359, 367, 373, 379, 383, 389, 397, 401, 409,
                   419, 421, 431, 433, 439, 443, 449, 457, 461, 463,
                   467, 479, 487, 491, 499, 503, 509, 521, 523, 541};
+  //Checking if divisible by first 100 primes 
   for (int divisor : firstPrimes){
     if (number % divisor == 0 && (divisor^2) <= number){
       break;
@@ -86,10 +87,24 @@ int generatePrime(int n){
   }
 }
 
-char messageEncrypt(const char plaintext[], int pubKey){
-  for(int character : strlen(plaintext)){
+CharacterVector messageEncrypt(const CharacterVector plaintext, int pubKey){
+  CharacterVector ciphertext = clone(plaintext);
+  for(int index = 0; index < plaintext.size(); index++){
+    char character = Rcpp::as<char>(ciphertext[index]);
+    //convert char to ascii
+    ciphertext[index] = int(character);
     
   }
+  return ciphertext;
+}
+
+char messageDecrypt(const char ciphertext[], int privKey){
+  char plaintext[sizeof(ciphertext)];
+  for(int index = 0; index < strlen(ciphertext); index++){
+    //char character = plaintext[index];
+    plaintext[index] = (int)ciphertext[index];
+  }
+  return (char)plaintext;
 }
 
 
