@@ -1,19 +1,10 @@
 
 #include <Rcpp.h>
-#include <math.h>
+//#include <math.h>
 using namespace Rcpp;
 using namespace std;
 
 
-// [[Rcpp::export]]
-List rcpp_hello_world() {
-
-    CharacterVector x = CharacterVector::create( "foo", "bar" )  ;
-    NumericVector y   = NumericVector::create( 0.0, 1.0 ) ;
-    List z            = List::create( x, y ) ;
-
-    return z ;
-}
 // [[Rcpp::export]]
 int NumberGenerator(int n){
   // random number of size n bits
@@ -32,6 +23,13 @@ int gcd(int a,int b) {
     b = r;
   }
   return b;
+}
+int pow(int a,int b) {
+  int powered = 1;
+  for(int i = 0; i < b; i++){
+    powered *= a;
+  }
+  return powered;
 }
 // [[Rcpp::export]]
 bool LowLevelPrimeCheck(int number){
@@ -123,7 +121,7 @@ CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
   return plaintext;
 }
 // [[Rcpp::export]]
-std::tuple<int, int, int>keyGenerator(int p = generatePrime(4), int q = generatePrime(4)){
+std::tuple<int, int, int>keyGenerator(int p = 2, int q = 7){
   int e, d;
   //check uniqueness
   if (p == q){
