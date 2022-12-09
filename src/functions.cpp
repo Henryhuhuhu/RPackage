@@ -1,6 +1,5 @@
 
 #include <Rcpp.h>
-//#include <math.h>
 using namespace Rcpp;
 using namespace std;
 
@@ -24,6 +23,7 @@ int gcd(int a,int b) {
   }
   return b;
 }
+// [[Rcpp::export]]
 int pow(int a,int b) {
   int powered = 1;
   for(int i = 0; i < b; i++){
@@ -55,37 +55,40 @@ bool LowLevelPrimeCheck(int number){
   return 0;
 }
 // [[Rcpp::export]]
+bool compositeCheck(int a, int d, int number, int k)
+{
+  if (pow(a, d) % number == 1 )
+    return 0;
+  for (int i = 0; i < k; i++)
+  {
+    if (pow(a, (1 << i) * d) % number == number - 1)
+      return 0;
+  }
+  return 1;
+}
+// [[Rcpp::export]]
 bool PrimeCheck(int number){
   if(LowLevelPrimeCheck(number) == 0){
     return 0;
   }
   //Rabin Miller Primality Test
   int d = number - 1;
+  int k = 0;
   while(d % 2 ==0){
     d /= 2;
+    k++;
   }
-  int iter = 20;    //Number of iterations of test. Higher value is more accurate
+  int iter = 5;    //Number of iterations of test. Higher value is more accurate
   for(int i = 0; i < iter; i++){
     // Pick a random number in [2 to (number-2)]
-    int a = 2 + rand() % (number - 4);
-    int modExp = int(pow(a, d)) % number;
-    if(modExp == 1 || modExp == number - 1){
-      return 1;
-    }
-    while(d != number - 1){
-      modExp = (modExp * modExp) % number;
-      d *= 2;
-      if(modExp == 1){
-        return 0;
-      }
-      if(modExp == number - 1){
-        return 1;
-      }
+    int a = 2 + rand() % (number - 2);
+    if (compositeCheck(a, d, number, k)){
+      return 0;
     }
   }    
-  return 0;
+  return 1;
 }
-
+// [[Rcpp::export]]
 int generatePrime(int n){
   int number;
   while(1){
@@ -121,7 +124,7 @@ CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
   return plaintext;
 }
 // [[Rcpp::export]]
-std::tuple<int, int, int>keyGenerator(int p = 2, int q = 7){
+std::tuple<int, int, int> keyGenerator(int p = 2, int q = 7){
   int e, d;
   //check uniqueness
   if (p == q){
@@ -140,7 +143,6 @@ std::tuple<int, int, int>keyGenerator(int p = 2, int q = 7){
   } while (d * e % m != 1);
   return std::make_tuple(n, e, d);
 }
-// [[Rcpp::export]]
 void testRSA(CharacterVector message = {"H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d", "!"}, int testp = 2, int testq = 7, int teste = 5, int testd = 11){
   std::tuple<int, int, int>(keys) = keyGenerator(testp, testq);
   int n = std::get<0>(keys);

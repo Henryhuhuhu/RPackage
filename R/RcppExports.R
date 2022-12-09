@@ -9,12 +9,24 @@ gcd <- function(a, b) {
     .Call(`_RSAPackage_gcd`, a, b)
 }
 
+pow <- function(a, b) {
+    .Call(`_RSAPackage_pow`, a, b)
+}
+
 LowLevelPrimeCheck <- function(number) {
     .Call(`_RSAPackage_LowLevelPrimeCheck`, number)
 }
 
+compositeCheck <- function(a, d, number, k) {
+    .Call(`_RSAPackage_compositeCheck`, a, d, number, k)
+}
+
 PrimeCheck <- function(number) {
     .Call(`_RSAPackage_PrimeCheck`, number)
+}
+
+generatePrime <- function(n) {
+    .Call(`_RSAPackage_generatePrime`, n)
 }
 
 messageEncrypt <- function(plaintext, e, n) {
@@ -25,7 +37,7 @@ messageDecrypt <- function(ciphertext, d, n) {
     .Call(`_RSAPackage_messageDecrypt`, ciphertext, d, n)
 }
 
-int>keyGenerator <- function(p = 2L, q = 7L) {
-    .Call(`_RSAPackage_int>keyGenerator`, p, q)
+keyGenerator <- function(p = 2L, q = 7L) {
+    .Call(`_RSAPackage_keyGenerator`, p, q)
 }
 

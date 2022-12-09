@@ -33,6 +33,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// pow
+int pow(int a, int b);
+RcppExport SEXP _RSAPackage_pow(SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type a(aSEXP);
+    Rcpp::traits::input_parameter< int >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(pow(a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
 // LowLevelPrimeCheck
 bool LowLevelPrimeCheck(int number);
 RcppExport SEXP _RSAPackage_LowLevelPrimeCheck(SEXP numberSEXP) {
@@ -44,6 +56,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// compositeCheck
+bool compositeCheck(int a, int d, int number, int k);
+RcppExport SEXP _RSAPackage_compositeCheck(SEXP aSEXP, SEXP dSEXP, SEXP numberSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type a(aSEXP);
+    Rcpp::traits::input_parameter< int >::type d(dSEXP);
+    Rcpp::traits::input_parameter< int >::type number(numberSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(compositeCheck(a, d, number, k));
+    return rcpp_result_gen;
+END_RCPP
+}
 // PrimeCheck
 bool PrimeCheck(int number);
 RcppExport SEXP _RSAPackage_PrimeCheck(SEXP numberSEXP) {
@@ -52,6 +78,17 @@ BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type number(numberSEXP);
     rcpp_result_gen = Rcpp::wrap(PrimeCheck(number));
+    return rcpp_result_gen;
+END_RCPP
+}
+// generatePrime
+int generatePrime(int n);
+RcppExport SEXP _RSAPackage_generatePrime(SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(generatePrime(n));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -81,15 +118,15 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// int>keyGenerator
-std::tuple<int, int, int>keyGenerator(int p, int q);
-RcppExport SEXP _RSAPackage_int>keyGenerator(SEXP pSEXP, SEXP qSEXP) {
+// keyGenerator
+std::tuple<int, int, int> keyGenerator(int p, int q);
+RcppExport SEXP _RSAPackage_keyGenerator(SEXP pSEXP, SEXP qSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type p(pSEXP);
     Rcpp::traits::input_parameter< int >::type q(qSEXP);
-    rcpp_result_gen = Rcpp::wrap(int>keyGenerator(p, q));
+    rcpp_result_gen = Rcpp::wrap(keyGenerator(p, q));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -97,11 +134,14 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_RSAPackage_NumberGenerator", (DL_FUNC) &_RSAPackage_NumberGenerator, 1},
     {"_RSAPackage_gcd", (DL_FUNC) &_RSAPackage_gcd, 2},
+    {"_RSAPackage_pow", (DL_FUNC) &_RSAPackage_pow, 2},
     {"_RSAPackage_LowLevelPrimeCheck", (DL_FUNC) &_RSAPackage_LowLevelPrimeCheck, 1},
+    {"_RSAPackage_compositeCheck", (DL_FUNC) &_RSAPackage_compositeCheck, 4},
     {"_RSAPackage_PrimeCheck", (DL_FUNC) &_RSAPackage_PrimeCheck, 1},
+    {"_RSAPackage_generatePrime", (DL_FUNC) &_RSAPackage_generatePrime, 1},
     {"_RSAPackage_messageEncrypt", (DL_FUNC) &_RSAPackage_messageEncrypt, 3},
     {"_RSAPackage_messageDecrypt", (DL_FUNC) &_RSAPackage_messageDecrypt, 3},
-    {"_RSAPackage_int>keyGenerator", (DL_FUNC) &_RSAPackage_int>keyGenerator, 2},
+    {"_RSAPackage_keyGenerator", (DL_FUNC) &_RSAPackage_keyGenerator, 2},
     {NULL, NULL, 0}
 };
 
