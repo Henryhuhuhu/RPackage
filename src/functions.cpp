@@ -91,14 +91,18 @@ bool PrimeCheck(int number){
 }
 // [[Rcpp::export]]
 int generatePrime(int n){
-  int number;
-  while(1){
+  int number, p;
+  do{
     number = NumberGenerator(n);
-    if(PrimeCheck(number)){
-      return number;
-    }
-  }
+  }while(PrimeCheck(number) == 0);
+  p = number;
+  //do{
+  //  number = NumberGenerator(n);
+  //}while(PrimeCheck(number) == 0 || number == p);
+  //q = number;
+  return p;
 }
+
 // [[Rcpp::export]]
 CharacterVector messageEncrypt(const CharacterVector plaintext, int e, int n){
   CharacterVector ciphertext = clone(plaintext);

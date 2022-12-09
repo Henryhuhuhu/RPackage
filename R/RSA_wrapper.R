@@ -64,9 +64,9 @@ RSAPrimeGenerate <- function(n = 4){
   
   #calling cpp function
   p = generatePrime(n)
-  q = p
-  while(p == q){
+  repeat{
     q = generatePrime(n)
+    if (p != q) break;
   }
-  return (list(p = p, q = q))
+  return (list(p, q))
 }
