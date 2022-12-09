@@ -13,7 +13,8 @@ Description: This package contains the functions that will encode messages using
   The message encryption function which encrypts an inputted plaintext using the inputted public key and outputs the ciphertext
   The message decryption function which decrypts an inputted ciphertext using the inputted private key and outputs the plaintext
 License: GPL (>= 3)
-Imports: Rcpp (>= 1.0.9)
+Imports: 
+    Rcpp
 Encoding: UTF-8
 LinkingTo: Rcpp
 RoxygenNote: 7.2.1
