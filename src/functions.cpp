@@ -125,12 +125,12 @@ CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
   return plaintext;
 }
 // [[Rcpp::export]]
-std::tuple<int, int, int> keyGenerator(int p = 2, int q = 7){
+List keyGenerator(int p = 2, int q = 7){
   int e, d;
   //check uniqueness
   if (p == q){
     cout << "please try again with two unique prime numbers" << endl;
-    return std::make_tuple(0, 0, 0);
+    return 0;
   }
   int n = p * q;
   int m = (p - 1) * (q - 1);
@@ -142,13 +142,13 @@ std::tuple<int, int, int> keyGenerator(int p = 2, int q = 7){
   do{
     d = 1 + ( std::rand() % (m));
   } while (d * e % m != 1);
-  return std::make_tuple(n, e, d);
+  return List::create(n, e, d);
 }
 void testRSA(CharacterVector message = {"H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d", "!"}, int testp = 2, int testq = 7, int teste = 5, int testd = 11){
-  std::tuple<int, int, int>(keys) = keyGenerator(testp, testq);
-  int n = std::get<0>(keys);
-  int e = std::get<1>(keys);
-  int d = std::get<2>(keys);
+  List keys = keyGenerator(testp, testq);
+  int n = keys[0];
+  int e = keys[1];
+  int d = keys[2];
   cout << "(n, e, d) = (" << n << ", " << e << ", " << d << ")\n";
   CharacterVector encodedMessage = messageEncrypt(message, e, n);
   cout <<"encoded message: "<< encodedMessage;
