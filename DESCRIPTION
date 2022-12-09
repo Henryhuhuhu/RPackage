@@ -14,4 +14,7 @@ Description: This package contains the functions that will encode messages using
   The message decryption function which decrypts an inputted ciphertext using the inputted private key and outputs the plaintext
 License: GPL (>= 3)
 Imports: Rcpp (>= 1.0.9), cmath
+Encoding: UTF-8
 LinkingTo: Rcpp
+RoxygenNote: 7.2.1
+Roxygen: list(markdown = TRUE)
