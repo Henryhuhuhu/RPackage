@@ -4,7 +4,7 @@ using namespace Rcpp;
 using namespace std;
 
 
-// [[Rcpp::export]]
+
 int NumberGenerator(int n){
   // random number of size n bits
   int max = pow(2, n) - 1;
@@ -12,7 +12,7 @@ int NumberGenerator(int n){
   int number = min + (rand() % ( max - min + 1 ) );
   return number;
 }
-// [[Rcpp::export]]
+
 int gcd(int a,int b) {
   //Euclidean Algorithm
   int r;
@@ -23,7 +23,7 @@ int gcd(int a,int b) {
   }
   return b;
 }
-// [[Rcpp::export]]
+
 int pow(int a,int b) {
   int powered = 1;
   for(int i = 0; i < b; i++){
@@ -31,7 +31,7 @@ int pow(int a,int b) {
   }
   return powered;
 }
-// [[Rcpp::export]]
+
 bool LowLevelPrimeCheck(int number){
   //first 100 prime numbers
   int firstPrimes[100] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
@@ -54,7 +54,7 @@ bool LowLevelPrimeCheck(int number){
   }
   return 0;
 }
-// [[Rcpp::export]]
+
 bool compositeCheck(int a, int d, int number, int k)
 {
   if (pow(a, d) % number == 1 )
@@ -66,7 +66,7 @@ bool compositeCheck(int a, int d, int number, int k)
   }
   return 1;
 }
-// [[Rcpp::export]]
+
 bool PrimeCheck(int number){
   if(LowLevelPrimeCheck(number) == 0){
     return 0;
@@ -78,10 +78,11 @@ bool PrimeCheck(int number){
     d /= 2;
     k++;
   }
-  int iter = 5;    //Number of iterations of test. Higher value is more accurate
+  int iter = 5;    //Number of iterations of test. Higher value is more accurate but slower
   for(int i = 0; i < iter; i++){
     // Pick a random number in [2 to (number-2)]
     int a = 2 + rand() % (number - 2);
+    //checking if composite
     if (compositeCheck(a, d, number, k)){
       return 0;
     }
