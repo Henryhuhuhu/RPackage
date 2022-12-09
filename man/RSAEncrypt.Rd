@@ -2,17 +2,29 @@
 % Please edit documentation in R/RSA_wrapper.R
 \name{RSAEncrypt}
 \alias{RSAEncrypt}
-\title{Title}
+\title{RSAEncrypt}
 \usage{
 RSAEncrypt(plaintext, e, n)
 }
 \arguments{
-\item{plaintext}{}
+\item{plaintext}{\itemize{
+\item the vector of characters to be encrypted
+}}
 
-\item{e}{}
+\item{e}{\itemize{
+\item the public key encryption component
+}}
 
-\item{n}{}
+\item{n}{\itemize{
+\item the key product component
+}}
+}
+\value{
+ciphertext - the encrypted plaintext
 }
 \description{
-Title
+RSAEncrypt
+}
+\examples{
+RSAEncrypt(plaintext, 2, 14)
 }

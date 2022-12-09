@@ -2,13 +2,20 @@
 % Please edit documentation in R/RSA_wrapper.R
 \name{RSAPrimeGenerate}
 \alias{RSAPrimeGenerate}
-\title{Title}
+\title{RSAPrimeGenerate}
 \usage{
 RSAPrimeGenerate(n = 4)
 }
 \arguments{
-\item{n}{}
+\item{n}{\itemize{
+\item the number of bits for the prime number to have
+}}
+}
+\value{
+\itemize{
+\item list containing two unique prime numbers of n bit size
+}
 }
 \description{
-Title
+RSAPrimeGenerate
 }

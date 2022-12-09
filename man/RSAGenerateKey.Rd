@@ -2,15 +2,22 @@
 % Please edit documentation in R/RSA_wrapper.R
 \name{RSAGenerateKey}
 \alias{RSAGenerateKey}
-\title{Title}
+\title{RSAGenerateKey}
 \usage{
 RSAGenerateKey(p = 2, q = 7)
 }
 \arguments{
-\item{p}{}
+\item{p}{\itemize{
+\item optional first prime number
+}}
 
-\item{q}{}
+\item{q}{\itemize{
+\item optional second prime number
+}}
+}
+\value{
+keys = (n, e, d) in which n is the key product component, e is the public key encryption component, and d is the private key decryption component
 }
 \description{
-Title
+RSAGenerateKey
 }

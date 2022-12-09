@@ -7,7 +7,7 @@
 #' @return ciphertext - the encrypted plaintext
 #' @export
 #'
-#' @examples
+#' @examples RSAEncrypt(plaintext, 2, 14)
 RSAEncrypt <- function(plaintext, e, n){
   #compatibility checks
   

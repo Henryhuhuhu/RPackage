@@ -2,17 +2,26 @@
 % Please edit documentation in R/RSA_wrapper.R
 \name{RSADecrypt}
 \alias{RSADecrypt}
-\title{Title}
+\title{RSADecrypt}
 \usage{
 RSADecrypt(ciphertext, d, n)
 }
 \arguments{
-\item{ciphertext}{}
+\item{ciphertext}{\itemize{
+\item the vector of characters to be decrypted
+}}
 
-\item{d}{}
+\item{d}{\itemize{
+\item the private key decryption component
+}}
 
-\item{n}{}
+\item{n}{\itemize{
+\item the key product component
+}}
+}
+\value{
+plaintext - the decrypted ciphertext
 }
 \description{
-Title
+RSADecrypt
 }
