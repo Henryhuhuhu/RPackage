@@ -1,3 +1,13 @@
+#' Title
+#'
+#' @param plaintext 
+#' @param e 
+#' @param n 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 RSAEncrypt <- function(plaintext, e, n){
   #compatibility checks
   
@@ -6,6 +16,16 @@ RSAEncrypt <- function(plaintext, e, n){
   return(ciphertext)
 }
 
+#' Title
+#'
+#' @param ciphertext 
+#' @param d 
+#' @param n 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 RSADecrypt <- function(ciphertext, d, n){
   #compatibility checks
   
@@ -14,6 +34,15 @@ RSADecrypt <- function(ciphertext, d, n){
   return(plaintext)
 }
 
+#' Title
+#'
+#' @param p 
+#' @param q 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 RSAGenerateKey <- function(p = 2, q = 7){
   #compatibility checks
   
@@ -22,6 +51,14 @@ RSAGenerateKey <- function(p = 2, q = 7){
   return(keys)
 }
 
+#' Title
+#'
+#' @param n 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 RSAPrimeGenerate <- function(n = 4){
   #compatibility checks
   

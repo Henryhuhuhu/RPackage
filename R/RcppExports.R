@@ -13,7 +13,7 @@ messageDecrypt <- function(ciphertext, d, n) {
     .Call(`_RSAPackage_messageDecrypt`, ciphertext, d, n)
 }
 
-keyGenerator <- function(p = 2L, q = 7L) {
+keyGenerator <- function(p, q) {
     .Call(`_RSAPackage_keyGenerator`, p, q)
 }
 

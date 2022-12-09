@@ -48,7 +48,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // keyGenerator
-std::tuple<int, int, int> keyGenerator(int p, int q);
+List keyGenerator(int p, int q);
 RcppExport SEXP _RSAPackage_keyGenerator(SEXP pSEXP, SEXP qSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
