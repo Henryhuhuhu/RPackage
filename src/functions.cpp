@@ -125,7 +125,7 @@ CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
   return plaintext;
 }
 // [[Rcpp::export]]
-List keyGenerator(int p = 2, int q = 7){
+List keyGenerator(int p, int q){
   int e, d;
   //check uniqueness
   if (p == q){
