@@ -1,10 +1,10 @@
-#' Title
+#' RSAEncrypt
 #'
-#' @param plaintext 
-#' @param e 
-#' @param n 
+#' @param plaintext - the vector of characters to be encrypted
+#' @param e - the public key encryption component
+#' @param n - the key product component
 #'
-#' @return
+#' @return ciphertext - the encrypted plaintext
 #' @export
 #'
 #' @examples
@@ -16,13 +16,13 @@ RSAEncrypt <- function(plaintext, e, n){
   return(ciphertext)
 }
 
-#' Title
+#' RSADecrypt
 #'
-#' @param ciphertext 
-#' @param d 
-#' @param n 
+#' @param ciphertext - the vector of characters to be decrypted
+#' @param d - the private key decryption component
+#' @param n - the key product component
 #'
-#' @return
+#' @return plaintext - the decrypted ciphertext
 #' @export
 #'
 #' @examples
@@ -34,12 +34,12 @@ RSADecrypt <- function(ciphertext, d, n){
   return(plaintext)
 }
 
-#' Title
+#' RSAGenerateKey
 #'
-#' @param p 
-#' @param q 
+#' @param p - optional first prime number
+#' @param q - optional second prime number
 #'
-#' @return
+#' @return keys = (n, e, d) in which n is the key product component, e is the public key encryption component, and d is the private key decryption component 
 #' @export
 #'
 #' @examples
@@ -51,11 +51,11 @@ RSAGenerateKey <- function(p = 2, q = 7){
   return(keys)
 }
 
-#' Title
+#' RSAPrimeGenerate
 #'
-#' @param n 
+#' @param n - the number of bits for the prime number to have
 #'
-#' @return
+#' @return - list containing two unique prime numbers of n bit size
 #' @export
 #'
 #' @examples
@@ -68,4 +68,5 @@ RSAPrimeGenerate <- function(n = 4){
   while(p == q){
     q = generatePrime(n)
   }
+  return (list(p = p, q = q))
 }
