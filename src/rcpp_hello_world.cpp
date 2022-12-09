@@ -23,6 +23,17 @@ int NumberGenerator(int n){
   return number;
 }
 
+int gcd(int a,int b) {
+  //Euclidean Algorithm
+  int r;
+  while ((a % b) > 0)  {
+    r = a % b;
+    a = b;
+    b = r;
+  }
+  return b;
+}
+
 bool LowLevelPrimeCheck(int number){
   //first 100 prime numbers
   int firstPrimes[100] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
@@ -112,6 +123,24 @@ CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
   return plaintext;
 }
 
-
+std::tuple<int, int, int>keyGenerator(int p = generatePrime(4), int q = generatePrime(4)){
+  int e, d;
+  //check uniqueness
+  if (p == q){
+    cout << "please try again with two unique prime numbers" << endl;
+    return std::make_tuple(0, 0, 0);
+  }
+  int n = p * q;
+  int m = (p - 1) * (q - 1);
+  //finding e in which is coprime with m
+  do{
+    e = 1 + ( std::rand() % (m));
+  }while(gcd(e, m) != 1);
+  //finding d in which is the modular inverse of e
+  do{
+    d = 1 + ( std::rand() % (m));
+  } while (d * e % m != 1);
+  return std::make_tuple(n, e, d);
+}
 
 
