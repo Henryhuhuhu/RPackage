@@ -14,7 +14,7 @@ List rcpp_hello_world() {
 
     return z ;
 }
-
+// [[Rcpp::export]]
 int NumberGenerator(int n){
   // random number of size n bits
   int max = pow(2, n) - 1;
@@ -22,7 +22,7 @@ int NumberGenerator(int n){
   int number = min + (rand() % ( max - min + 1 ) );
   return number;
 }
-
+// [[Rcpp::export]]
 int gcd(int a,int b) {
   //Euclidean Algorithm
   int r;
@@ -33,7 +33,7 @@ int gcd(int a,int b) {
   }
   return b;
 }
-
+// [[Rcpp::export]]
 bool LowLevelPrimeCheck(int number){
   //first 100 prime numbers
   int firstPrimes[100] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
@@ -56,7 +56,7 @@ bool LowLevelPrimeCheck(int number){
   }
   return 0;
 }
-
+// [[Rcpp::export]]
 bool PrimeCheck(int number){
   if(LowLevelPrimeCheck(number) == 0){
     return 0;
@@ -97,7 +97,7 @@ int generatePrime(int n){
     }
   }
 }
-
+// [[Rcpp::export]]
 CharacterVector messageEncrypt(const CharacterVector plaintext, int e, int n){
   CharacterVector ciphertext = clone(plaintext);
   for(int index = 0; index < plaintext.size(); index++){
@@ -109,7 +109,7 @@ CharacterVector messageEncrypt(const CharacterVector plaintext, int e, int n){
   }
   return ciphertext;
 }
-
+// [[Rcpp::export]]
 CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
   CharacterVector plaintext = clone(ciphertext);
   for(int index = 0; index < ciphertext.size(); index++){
@@ -122,7 +122,7 @@ CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
   }
   return plaintext;
 }
-
+// [[Rcpp::export]]
 std::tuple<int, int, int>keyGenerator(int p = generatePrime(4), int q = generatePrime(4)){
   int e, d;
   //check uniqueness
@@ -142,7 +142,7 @@ std::tuple<int, int, int>keyGenerator(int p = generatePrime(4), int q = generate
   } while (d * e % m != 1);
   return std::make_tuple(n, e, d);
 }
-
+// [[Rcpp::export]]
 void testRSA(CharacterVector message = {"H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d", "!"}, int testp = 2, int testq = 7, int teste = 5, int testd = 11){
   std::tuple<int, int, int>(keys) = keyGenerator(testp, testq);
   int n = std::get<0>(keys);
