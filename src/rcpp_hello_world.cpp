@@ -143,4 +143,21 @@ std::tuple<int, int, int>keyGenerator(int p = generatePrime(4), int q = generate
   return std::make_tuple(n, e, d);
 }
 
+void testRSA(CharacterVector message = {"H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d", "!"}, int testp = 2, int testq = 7, int teste = 5, int testd = 11){
+  std::tuple<int, int, int>(keys) = keyGenerator(testp, testq);
+  int n = std::get<0>(keys);
+  int e = std::get<1>(keys);
+  int d = std::get<2>(keys);
+  cout << "(n, e, d) = (" << n << ", " << e << ", " << d << ")\n";
+  CharacterVector encodedMessage = messageEncrypt(message, e, n);
+  cout <<"encoded message: "<< encodedMessage;
+  CharacterVector decodedMessage = messageDecrypt(encodedMessage, d, n);
+  cout <<"decoded message: "<< decodedMessage;
+  
+  CharacterVector encodedMessage2 = messageEncrypt(message, teste, n);
+  cout <<"encoded message2: "<< encodedMessage2;
+  CharacterVector decodedMessage2 = messageDecrypt(encodedMessage, testd, n);
+  cout <<"decoded message2: "<< decodedMessage2;
+}
+
 
