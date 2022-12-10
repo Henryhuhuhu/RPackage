@@ -10,9 +10,7 @@ Generaltest <- function(){
   d = unlist(keyList)[3]
   print(keyList)
   ciphertext = RSAEncrypt(plaintext, e, n)
-  print(utf8ToInt(ciphertext))
   print(ciphertext)
   decoded = RSADecrypt(ciphertext, d, n)
-  print(utf8ToInt(decoded))
   print(decoded)
 }

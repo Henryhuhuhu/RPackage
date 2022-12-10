@@ -14,9 +14,7 @@ RSAEncrypt <- function(plaintext, e, n){
   #calling cpp function
   ciphertext = messageEncrypt(utf8ToInt(plaintext), e, n)
   #turn the returned ascii values to ascii characters
-  cipherint = as.integer(ciphertext)
-  ciphertext = intToUtf8(cipherint, multiple = TRUE)
-  return(ciphertext)
+  return(intToUtf8(ciphertext, multiple = TRUE))
 }
 
 #' RSADecrypt
@@ -33,11 +31,9 @@ RSADecrypt <- function(ciphertext, d, n){
   #compatibility checks
   
   #calling cpp function
-  plaintext = messageDecrypt(utf8ToInt(ciphertext), d, n)
+  plaintext = messageDecrypt(utf8ToInt(paste(ciphertext,collapse = "")), d, n)
   #turn the returned ascii values to ascii characters
-  plainint = as.integer(plaintext)
-  plaintext = intToUtf8(plainint, multiple = TRUE)
-  return(plaintext)
+  return(intToUtf8(plaintext, multiple = TRUE))
 }
 
 #' RSAGenerateKey
