@@ -10,7 +10,12 @@
 #' @examples RSAEncrypt("Hello World!", 1153, 1517)
 RSAEncrypt <- function(plaintext, e, n){
   #compatibility checks
-  
+  if(!(is.integer(n)) || !(is.integer(e))){
+    stop("Inputs needs to be an integer")
+  }
+  if(!(n < 1) || !(e < 1)){
+    stop("Inputs needs to be positive")
+  }
   #calling cpp function
   ciphertext = messageEncrypt(utf8ToInt(plaintext), e, n)
   #turn the returned ascii values to ascii characters
@@ -29,7 +34,12 @@ RSAEncrypt <- function(plaintext, e, n){
 #' @examples RSADecrypt("ͶҖĥĥă ȓărĥ®ԋ", 577, 1517)
 RSADecrypt <- function(ciphertext, d, n){
   #compatibility checks
-  
+  if(!(is.integer(n)) || !(is.integer(d))){
+    stop("Inputs needs to be an integer")
+  }
+  if(!(n < 1) || !(d < 1)){
+    stop("Inputs needs to be positive")
+  }
   #calling cpp function
   plaintext = messageDecrypt(utf8ToInt(paste(ciphertext,collapse = "")), d, n)
   #turn the returned ascii values to ascii characters
@@ -58,6 +68,9 @@ RSAGenerateKey <- function(p = NULL, q = NULL){
     if(!(is.integer(p)) || !(is.integer(q))){
       stop("Inputs need to be integer values")
     }
+    if((p < 2) || (q < 2)){
+      stop("Inputs need to be prime")
+    }
     if(!(PrimeCheck(p)) || !(PrimeCheck(q))){
       stop("Inputs need to be prime")
     }
@@ -77,7 +90,12 @@ RSAGenerateKey <- function(p = NULL, q = NULL){
 #' @examples
 RSAPrimeGenerate <- function(n = 6){
   #compatibility checks
-  
+  if(!(is.integer(n))){
+    stop("Input needs to be an integer")
+  }
+  if(n < 1){
+    stop("Input needs to be positive")
+  }
   #calling cpp function
   p = generatePrime(n)
   repeat{
