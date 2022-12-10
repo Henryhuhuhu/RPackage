@@ -32,6 +32,30 @@ int pow(int a,int b) {
   return powered;
 }
 
+int modExp(int A, int B, int C)
+{
+  // Base cases
+  if (A == 0)
+    return 0;
+  if (B == 0)
+    return 1;
+  
+  // If B is even
+  long long y;
+  if (B % 2 == 0) {
+    y = modExp(A, B / 2, C);
+    y = (y * y) % C;
+  }
+  
+  // If B is odd
+  else {
+    y = A % C;
+    y = (y * modExp(A, B - 1, C) % C) % C;
+  }
+  
+  return (int)((y + C) % C);
+}
+
 bool LowLevelPrimeCheck(int number){
   //first 100 prime numbers
   int firstPrimes[100] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
@@ -57,11 +81,11 @@ bool LowLevelPrimeCheck(int number){
 
 bool compositeCheck(int a, int d, int number, int k)
 {
-  if (pow(a, d) % number == 1 )
+  if ((long long)pow(a, d) % number == 1 )
     return 0;
   for (int i = 0; i < k; i++)
   {
-    if (pow(a, (1 << i) * d) % number == number - 1)
+    if ((long long)pow(a, (1 << i) * d) % number == number - 1)
       return 0;
   }
   return 1;
@@ -104,27 +128,26 @@ int generatePrime(int n){
 }
 
 // [[Rcpp::export]]
-CharacterVector messageEncrypt(const CharacterVector plaintext, int e, int n){
-  CharacterVector ciphertext = clone(plaintext);
+NumericVector messageEncrypt(const NumericVector plaintext, int e, int n){
+  NumericVector ciphertext = clone(plaintext);
   for(int index = 0; index < plaintext.size(); index++){
-    char character = Rcpp::as<char>(ciphertext[index]);
+    //char character = Rcpp::as<char>(ciphertext[index]);
     //convert char to ascii and encrypt ascii value
-    int encryptedValue = int(pow(int(character), e)) % n;
+    int encryptedValue = modExp((int)ciphertext[index], e, n);
     //convert value to char
-    ciphertext[index] = static_cast<char>(encryptedValue);
+    ciphertext[index] = encryptedValue;
   }
   return ciphertext;
 }
 // [[Rcpp::export]]
-CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n){
-  CharacterVector plaintext = clone(ciphertext);
+NumericVector messageDecrypt(const NumericVector ciphertext, int d, int n){
+  NumericVector plaintext = clone(ciphertext);
   for(int index = 0; index < ciphertext.size(); index++){
-    char character = Rcpp::as<char>(plaintext[index]);
+    //char character = Rcpp::as<char>(plaintext[index]);
     //convert char to ascii and decrypt ascii value
-    int decryptedValue = int(pow(int(character), d)) % n;
+    int decryptedValue = modExp((int)plaintext[index], d, n);
     //convert value to char
-    plaintext[index] = static_cast<char>(decryptedValue);
-    
+    plaintext[index] = decryptedValue;
   }
   return plaintext;
 }
@@ -145,10 +168,10 @@ List keyGenerator(int p, int q){
   //finding d in which is the modular inverse of e
   do{
     d = 1 + ( std::rand() % (m));
-  } while (d * e % m != 1);
+  } while ((d * e) % m != 1);
   return List::create(n, e, d);
 }
-void testRSA(CharacterVector message = {"H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d", "!"}, int testp = 2, int testq = 7, int teste = 5, int testd = 11){
+/*void testRSA(CharacterVector message = {"H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d", "!"}, int testp = 2, int testq = 7, int teste = 5, int testd = 11){
   List keys = keyGenerator(testp, testq);
   int n = keys[0];
   int e = keys[1];
@@ -163,6 +186,6 @@ void testRSA(CharacterVector message = {"H", "e", "l", "l", "o", " ", "W", "o", 
   cout <<"encoded message2: "<< encodedMessage2;
   CharacterVector decodedMessage2 = messageDecrypt(encodedMessage, testd, n);
   cout <<"decoded message2: "<< decodedMessage2;
-}
+}*/
 
 

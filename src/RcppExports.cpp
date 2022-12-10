@@ -22,12 +22,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // messageEncrypt
-CharacterVector messageEncrypt(const CharacterVector plaintext, int e, int n);
+NumericVector messageEncrypt(const NumericVector plaintext, int e, int n);
 RcppExport SEXP _RSAPackage_messageEncrypt(SEXP plaintextSEXP, SEXP eSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const CharacterVector >::type plaintext(plaintextSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type plaintext(plaintextSEXP);
     Rcpp::traits::input_parameter< int >::type e(eSEXP);
     Rcpp::traits::input_parameter< int >::type n(nSEXP);
     rcpp_result_gen = Rcpp::wrap(messageEncrypt(plaintext, e, n));
@@ -35,12 +35,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // messageDecrypt
-CharacterVector messageDecrypt(const CharacterVector ciphertext, int d, int n);
+NumericVector messageDecrypt(const NumericVector ciphertext, int d, int n);
 RcppExport SEXP _RSAPackage_messageDecrypt(SEXP ciphertextSEXP, SEXP dSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const CharacterVector >::type ciphertext(ciphertextSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type ciphertext(ciphertextSEXP);
     Rcpp::traits::input_parameter< int >::type d(dSEXP);
     Rcpp::traits::input_parameter< int >::type n(nSEXP);
     rcpp_result_gen = Rcpp::wrap(messageDecrypt(ciphertext, d, n));
