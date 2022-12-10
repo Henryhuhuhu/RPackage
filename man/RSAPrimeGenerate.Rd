@@ -4,7 +4,7 @@
 \alias{RSAPrimeGenerate}
 \title{RSAPrimeGenerate}
 \usage{
-RSAPrimeGenerate(n = 4)
+RSAPrimeGenerate(n = 6)
 }
 \arguments{
 \item{n}{\itemize{

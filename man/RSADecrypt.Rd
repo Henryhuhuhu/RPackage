@@ -8,7 +8,7 @@ RSADecrypt(ciphertext, d, n)
 }
 \arguments{
 \item{ciphertext}{\itemize{
-\item the vector of characters to be decrypted
+\item the string of characters to be decrypted
 }}
 
 \item{d}{\itemize{
@@ -20,8 +20,11 @@ RSADecrypt(ciphertext, d, n)
 }}
 }
 \value{
-plaintext - the decrypted ciphertext
+plaintext - the decrypted ciphertext as a character vector
 }
 \description{
 RSADecrypt
+}
+\examples{
+RSADecrypt("ͶҖĥĥă ȓărĥ®ԋ", 577, 1517)
 }

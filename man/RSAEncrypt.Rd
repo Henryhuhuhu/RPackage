@@ -8,7 +8,7 @@ RSAEncrypt(plaintext, e, n)
 }
 \arguments{
 \item{plaintext}{\itemize{
-\item the vector of characters to be encrypted
+\item the string of characters to be encrypted
 }}
 
 \item{e}{\itemize{
@@ -20,11 +20,11 @@ RSAEncrypt(plaintext, e, n)
 }}
 }
 \value{
-ciphertext - the encrypted plaintext
+ciphertext - the encrypted plaintext as a character vector
 }
 \description{
 RSAEncrypt
 }
 \examples{
-RSAEncrypt(plaintext, 2, 14)
+RSAEncrypt("Hello World!", 1153, 1517)
 }

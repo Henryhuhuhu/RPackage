@@ -4,15 +4,15 @@
 \alias{RSAGenerateKey}
 \title{RSAGenerateKey}
 \usage{
-RSAGenerateKey(p = 2, q = 7)
+RSAGenerateKey(p = NULL, q = NULL)
 }
 \arguments{
 \item{p}{\itemize{
-\item optional first prime number
+\item first prime number
 }}
 
 \item{q}{\itemize{
-\item optional second prime number
+\item second prime number
 }}
 }
 \value{
@@ -20,4 +20,7 @@ keys = (n, e, d) in which n is the key product component, e is the public key en
 }
 \description{
 RSAGenerateKey
+}
+\examples{
+RSAGenerateKey(41, 37)
 }
