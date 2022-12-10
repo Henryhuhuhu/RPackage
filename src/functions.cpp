@@ -90,7 +90,7 @@ bool compositeCheck(int a, int d, int number, int k)
   }
   return 1;
 }
-
+// [[Rcpp::export]]
 bool PrimeCheck(int number){
   if(LowLevelPrimeCheck(number) == 0){
     return 0;
