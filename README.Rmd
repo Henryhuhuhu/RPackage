@@ -11,16 +11,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Installation instructions
 
-To install this package from GitHub to Rstudio, RTools and devtools are required to be installed.
+To install this package from GitHub to Rstudio, RTools and devtools are required to be installed. Run the following code on the Console.
+
+```{r}
+devtools::install_github("Henryhuhuhu/RPackage")
+```
 
 ## RSA Package
 
 This package contains the functions that will encode messages using the RSA methodology. These functions include:
 
-RSAPrimeGenerate(*n*) - The random prime number generator of an inputted bit size *n* that outputs a prime number of the provided bit size.
+-   RSAPrimeGenerate(*n*) - The random prime number generator of an inputted bit size *n* that outputs a prime number of the provided bit size.
 
-RSAGenerateKey(*p, q*) - The key encryption function which needs the input of two unique large prime integers *p* and *q* to generate the public and private keys.
+-   RSAGenerateKey(*p, q*) - The key encryption function which needs the input of two unique large prime integers *p* and *q* to generate the public and private keys.
 
-RSAEncrypt(plaintext, e, n) - The message encryption function which encrypts an inputted character vector *plaintext* using the inputted public key(e, n) and outputs the character vector *ciphertext.*
+-   RSAEncrypt(plaintext, e, n) - The message encryption function which encrypts an inputted character vector *plaintext* using the inputted public key(e, n) and outputs the character vector *ciphertext.*
 
-RSADecrypt(ciphertext, d, n) - The message decryption function which decrypts an inputted character vector *ciphertext* using the inputted private key(d, n) and outputs the character vector *plaintext.*
+-   RSADecrypt(ciphertext, d, n) - The message decryption function which decrypts an inputted character vector *ciphertext* using the inputted private key(d, n) and outputs the character vector *plaintext.*
