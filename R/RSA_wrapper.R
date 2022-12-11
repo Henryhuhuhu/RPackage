@@ -10,10 +10,10 @@
 #' @examples RSAEncrypt("Hello World!", 1153, 1517)
 RSAEncrypt <- function(plaintext, e, n){
   #compatibility checks
-  if(!(is.integer(n)) || !(is.integer(e))){
-    stop("Inputs needs to be an integer")
+  if(is.numeric(n) == FALSE || is.numeric(e) == FALSE){
+    stop("Inputs needs to be a number")
   }
-  if(!(n < 1) || !(e < 1)){
+  if((n < 1) || (e < 1)){
     stop("Inputs needs to be positive")
   }
   #calling cpp function
@@ -34,10 +34,10 @@ RSAEncrypt <- function(plaintext, e, n){
 #' @examples RSADecrypt("ͶҖĥĥă ȓărĥ®ԋ", 577, 1517)
 RSADecrypt <- function(ciphertext, d, n){
   #compatibility checks
-  if(!(is.integer(n)) || !(is.integer(d))){
-    stop("Inputs needs to be an integer")
+  if(is.numeric(n) == FALSE || is.numeric(d) == FALSE){
+    stop("Inputs needs to be a number")
   }
-  if(!(n < 1) || !(d < 1)){
+  if((n < 1) || (d < 1)){
     stop("Inputs needs to be positive")
   }
   #calling cpp function
@@ -65,14 +65,14 @@ RSAGenerateKey <- function(p = NULL, q = NULL){
     if(p == q){
       stop("Inputs need to be unique")
     }
-    if(!(is.integer(p)) || !(is.integer(q))){
-      stop("Inputs need to be integer values")
+    if(is.numeric(p) == FALSE || is.numeric(q) == FALSE){
+      stop("Inputs need to be a number")
     }
     if((p < 2) || (q < 2)){
       stop("Inputs need to be prime")
     }
-    if(!(PrimeCheck(p)) || !(PrimeCheck(q))){
-      stop("Inputs need to be prime")
+    if(rPrimeCheck(as.integer(p)) == FALSE || rPrimeCheck(as.integer(q)) == FALSE){
+      #stop("Inputs need to be prime")
     }
   }
   #calling cpp function
@@ -84,18 +84,20 @@ RSAGenerateKey <- function(p = NULL, q = NULL){
 #'
 #' @param n - the number of bits for the prime number to have
 #'
-#' @return - list containing two unique prime numbers of n bit size
+#' @return list containing two unique prime numbers of n bit size
 #' @export
 #'
-#' @examples
+#' @examples  RSAPrimeGenerate(6)
 RSAPrimeGenerate <- function(n = 6){
   #compatibility checks
-  if(!(is.integer(n))){
-    stop("Input needs to be an integer")
+  if(is.numeric(n) == FALSE){
+    stop("Input needs to be a number")
   }
   if(n < 1){
     stop("Input needs to be positive")
   }
+  #converting to integer value
+  n = as.integer(n)
   #calling cpp function
   p = generatePrime(n)
   repeat{

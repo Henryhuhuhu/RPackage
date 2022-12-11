@@ -73,27 +73,27 @@ bool LowLevelPrimeCheck(int number){
     if (number % divisor == 0 && (divisor^2) <= number){
       break;
     }else{
-      return 1;
+      return true;
     }
   }
-  return 0;
+  return false;
 }
 
 bool compositeCheck(int a, int d, int number, int k)
 {
   if ((long long)pow(a, d) % number == 1 )
-    return 0;
+    return false;
   for (int i = 0; i < k; i++)
   {
     if ((long long)pow(a, (1 << i) * d) % number == number - 1)
-      return 0;
+      return false;
   }
-  return 1;
+  return true;
 }
-// [[Rcpp::export]]
+
 bool PrimeCheck(int number){
   if(LowLevelPrimeCheck(number) == 0){
-    return 0;
+    return false;
   }
   //Rabin Miller Primality Test
   int d = number - 1;
@@ -108,11 +108,22 @@ bool PrimeCheck(int number){
     int a = 2 + rand() % (number - 2);
     //checking if composite
     if (compositeCheck(a, d, number, k)){
-      return 0;
+      return false;
     }
   }    
-  return 1;
+  return true;
 }
+
+// [[Rcpp::export]]
+Rcpp::LogicalVector rPrimeCheck(int number){
+  // for returning directly to R files for compatibility checks
+  if (PrimeCheck(number)){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 // [[Rcpp::export]]
 int generatePrime(int n){
   int number, p;
