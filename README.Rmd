@@ -9,6 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/Henryhuhuhu/RPackage/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Henryhuhuhu/RPackage/actions/workflows/R-CMD-check.yaml)
+
+<!-- badges: end -->
+
 ## Installation instructions
 
 To install this package from GitHub to Rstudio, RTools and devtools are required to be installed. Run the following code on the Console.
