@@ -1,17 +1,13 @@
 Package: RSAPackage
 Type: Package
 Title: Package containing functions related to RSA encoding and decoding
-Version: 0.0.0.9000
+Version: 1.0.0.0
 Author: 
   person("Henry", "Hu",
   email = "henryhuhuhu@tamu.edu",
   role = c("aut", "cre"))
 Maintainer: Henry Hu <henryhuhuhu@tamu.edu>
-Description: This package contains the functions that will encode messages using the RSA methodology. These functions include:
-  The random prime number generator of an inputted bit size that outputs a prime number of the provided bit size. 
-  The key encryption function which needs the input of two unique large prime integers to generate the public and private keys.
-  The message encryption function which encrypts an inputted plaintext using the inputted public key and outputs the ciphertext
-  The message decryption function which decrypts an inputted ciphertext using the inputted private key and outputs the plaintext
+Description: This package contains the functions that will encode messages using the RSA methodology. The first function is a random prime number generator of an inputted bit size that outputs a prime number of the provided bit size. Note that using a higher bitsize will take longer to generate prime numbers. The key generator will output the keys used for RSA which needs the input of two unique large prime integers to generate the public and private keys. The message encryption function will encrypt an inputted plaintext using the inputted public key and outputs the ciphertext. The message decryption function will decrypt an inputted ciphertext using the inputted private key and outputs the plaintext.
 License: GPL (>= 3)
 Imports: 
     Rcpp

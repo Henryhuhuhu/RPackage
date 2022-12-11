@@ -8,15 +8,15 @@ RSADecrypt(ciphertext, d, n)
 }
 \arguments{
 \item{ciphertext}{\itemize{
-\item the string of characters to be decrypted
+\item The string of characters to be decrypted.
 }}
 
 \item{d}{\itemize{
-\item the private key decryption component
+\item The private key decryption component. This should be an integer value
 }}
 
 \item{n}{\itemize{
-\item the key product component
+\item The key product component. This should be an integer value
 }}
 }
 \value{

@@ -1,8 +1,8 @@
 #' RSAEncrypt
 #'
-#' @param plaintext - the string of characters to be encrypted
-#' @param e - the public key encryption component
-#' @param n - the key product component
+#' @param plaintext - the string of characters to be encrypted.
+#' @param e - the public key encryption component. This should be an integer value
+#' @param n - the key product component.This should be an integer value
 #'
 #' @return ciphertext - the encrypted plaintext as a character vector
 #' @export
@@ -24,9 +24,9 @@ RSAEncrypt <- function(plaintext, e, n){
 
 #' RSADecrypt
 #'
-#' @param ciphertext - the string of characters to be decrypted
-#' @param d - the private key decryption component
-#' @param n - the key product component
+#' @param ciphertext - The string of characters to be decrypted.
+#' @param d - The private key decryption component. This should be an integer value
+#' @param n - The key product component. This should be an integer value
 #'
 #' @return plaintext - the decrypted ciphertext as a character vector
 #' @export
@@ -48,8 +48,8 @@ RSADecrypt <- function(ciphertext, d, n){
 
 #' RSAGenerateKey
 #'
-#' @param p - first prime number
-#' @param q - second prime number
+#' @param p An integer value that is prime.
+#' @param q An integer value that is prime and unique to p. If p and q are NULL, then RSAPrimeGenerate will be called that will provide six bit prime numbers for both values.
 #'
 #' @return keys = (n, e, d) in which n is the key product component, e is the public key encryption component, and d is the private key decryption component 
 #' @export
@@ -82,7 +82,7 @@ RSAGenerateKey <- function(p = NULL, q = NULL){
 
 #' RSAPrimeGenerate
 #'
-#' @param n - the number of bits for the prime number to have
+#' @param n - The number of bits for the prime number to have. This should be represented as a positive scalar integer value
 #'
 #' @return list containing two unique prime numbers of n bit size
 #' @export

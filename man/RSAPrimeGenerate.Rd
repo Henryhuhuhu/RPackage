@@ -8,14 +8,15 @@ RSAPrimeGenerate(n = 6)
 }
 \arguments{
 \item{n}{\itemize{
-\item the number of bits for the prime number to have
+\item The number of bits for the prime number to have. This should be represented as a positive scalar integer value
 }}
 }
 \value{
-\itemize{
-\item list containing two unique prime numbers of n bit size
-}
+list containing two unique prime numbers of n bit size
 }
 \description{
 RSAPrimeGenerate
+}
+\examples{
+ RSAPrimeGenerate(6)
 }

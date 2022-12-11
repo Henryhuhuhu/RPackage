@@ -8,15 +8,15 @@ RSAEncrypt(plaintext, e, n)
 }
 \arguments{
 \item{plaintext}{\itemize{
-\item the string of characters to be encrypted
+\item the string of characters to be encrypted.
 }}
 
 \item{e}{\itemize{
-\item the public key encryption component
+\item the public key encryption component. This should be an integer value
 }}
 
 \item{n}{\itemize{
-\item the key product component
+\item the key product component.This should be an integer value
 }}
 }
 \value{
