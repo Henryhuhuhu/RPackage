@@ -167,7 +167,6 @@ List keyGenerator(int p, int q){
   int e, d;
   //check uniqueness
   if (p == q){
-    cout << "please try again with two unique prime numbers" << endl;
     return 0;
   }
   int n = p * q;
@@ -182,21 +181,6 @@ List keyGenerator(int p, int q){
   } while ((d * e) % m != 1);
   return List::create(n, e, d);
 }
-/*void testRSA(CharacterVector message = {"H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d", "!"}, int testp = 2, int testq = 7, int teste = 5, int testd = 11){
-  List keys = keyGenerator(testp, testq);
-  int n = keys[0];
-  int e = keys[1];
-  int d = keys[2];
-  cout << "(n, e, d) = (" << n << ", " << e << ", " << d << ")\n";
-  CharacterVector encodedMessage = messageEncrypt(message, e, n);
-  cout <<"encoded message: "<< encodedMessage;
-  CharacterVector decodedMessage = messageDecrypt(encodedMessage, d, n);
-  cout <<"decoded message: "<< decodedMessage;
-  
-  CharacterVector encodedMessage2 = messageEncrypt(message, teste, n);
-  cout <<"encoded message2: "<< encodedMessage2;
-  CharacterVector decodedMessage2 = messageDecrypt(encodedMessage, testd, n);
-  cout <<"decoded message2: "<< decodedMessage2;
-}*/
+
 
 
