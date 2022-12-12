@@ -9,3 +9,10 @@ test_that("RSAPrimeGenerate", {
     expect_false(q %% d == 0)
   }
 })
+test_that("Negative n", {
+    expect_error(RSAPrimeGenerate(-1))
+})
+
+test_that("Non numeric", {
+  expect_error(RSAPrimeGenerate("seven"))
+})
