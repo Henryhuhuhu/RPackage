@@ -1,7 +1,7 @@
 #' RSAEncrypt
 #'
 #' @param plaintext - the string of characters to be encrypted.
-#' @param e - the public key encryption component. This should be an integer value
+#' @param e - the public key encryption component. This should be an integer value. Note that RSA requires that e and d used must satisfy e ^ d % n = 1 in order for the encryption and decryption to work.
 #' @param n - the key product component.This should be an integer value
 #'
 #' @return ciphertext - the encrypted plaintext as a character vector
@@ -25,7 +25,7 @@ RSAEncrypt <- function(plaintext, e, n){
 #' RSADecrypt
 #'
 #' @param ciphertext - The string of characters to be decrypted.
-#' @param d - The private key decryption component. This should be an integer value
+#' @param d - The private key decryption component. This should be an integer value. Note that RSA requires that e and d used must satisfy e ^ d % n = 1 in order for the encryption and decryption to work.
 #' @param n - The key product component. This should be an integer value
 #'
 #' @return plaintext - the decrypted ciphertext as a character vector
