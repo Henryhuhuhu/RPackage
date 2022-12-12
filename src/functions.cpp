@@ -32,6 +32,7 @@ int pow(int a,int b) {
   return powered;
 }
 
+// [[Rcpp::export]]
 int modExp(int A, int B, int C)
 {
   // Base cases

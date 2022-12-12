@@ -10,6 +10,19 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// modExp
+int modExp(int A, int B, int C);
+RcppExport SEXP _RSAPackage_modExp(SEXP ASEXP, SEXP BSEXP, SEXP CSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type A(ASEXP);
+    Rcpp::traits::input_parameter< int >::type B(BSEXP);
+    Rcpp::traits::input_parameter< int >::type C(CSEXP);
+    rcpp_result_gen = Rcpp::wrap(modExp(A, B, C));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rPrimeCheck
 Rcpp::LogicalVector rPrimeCheck(int number);
 RcppExport SEXP _RSAPackage_rPrimeCheck(SEXP numberSEXP) {
@@ -72,6 +85,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_RSAPackage_modExp", (DL_FUNC) &_RSAPackage_modExp, 3},
     {"_RSAPackage_rPrimeCheck", (DL_FUNC) &_RSAPackage_rPrimeCheck, 1},
     {"_RSAPackage_generatePrime", (DL_FUNC) &_RSAPackage_generatePrime, 1},
     {"_RSAPackage_messageEncrypt", (DL_FUNC) &_RSAPackage_messageEncrypt, 3},
